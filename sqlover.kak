@@ -55,5 +55,3 @@ define-command sqloverdoq -override -params 0.. %{
     fi
   }
 }
-
-sqloverinit  acuora=oracle://accumulator:123456789@localhost:32770/ORCLCDB.localdomain
