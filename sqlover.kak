@@ -54,4 +54,6 @@ define-command sqloverdoq -override -params 0.. %{
       printf "execute-keys 'gjo<esc>! usql -c \"%%opt{sqloverscurrentquery}\" %%opt{sqloverselecteddsn} --json <a-!><ret>jd'\n"
     fi
   }
+
+  opensqlover
 }
