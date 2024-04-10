@@ -32,7 +32,11 @@ sqloverdoq
 
 I usually just do:
 ``` sh
-map global user q ': sqloverdoq '
+plug "eko234/sqlover" config %{
+  sqloverinit  mylocaldb=oracle://mydbname:mypassword@localhost:32770/ORCLCDB.localdomain
+  alias global pdb sqloverpickdb
+  map global user q ': sqloverdoq '
+}
 ```
 
 and just hit enter or specify the query depending on what im doing, I also developped `geppeto` for kakoune,
