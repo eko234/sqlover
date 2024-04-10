@@ -44,7 +44,7 @@ define-command sqloverpickdb -shell-script-candidates %{
 define-command sqloverdoq -override -params 0.. %{
   evaluate-commands -draft %sh{
     [ "$kak_opt_sqloverstarted" = false ] && echo fail dang it bobby, you need to init this trash && exit 1
-    [ -z "$kak_opt_sqloverselecteddsn" ] && echo fail dang it bobby, to select a db to work && exit 1
+    [ -z "$kak_opt_sqloverselecteddsn" ] && echo fail dang it bobby, you need to select a db to work && exit 1
     printf "opensqlover\n"
     if [ $(($(printf %s "${kak_selection}" | wc -m))) -gt 1 ]; then
       echo "set-option global sqloverscurrentquery $kak_quoted_selection"
@@ -56,4 +56,5 @@ define-command sqloverdoq -override -params 0.. %{
   }
 
   opensqlover
+  execute-keys 'gj'
 }
