@@ -47,7 +47,7 @@ define-command sqloverdoq -override -params 0.. %{
     [ -z "$kak_opt_sqloverselecteddsn" ] && echo fail dang it bobby, you need to select a db to work && exit 1
     printf "opensqlover\n"
     if [ $(($(printf %s "${kak_selection}" | wc -m))) -gt 1 ]; then
-      echo "set-option global sqloverscurrentquery $kak_quoted_selection"
+      echo "set-option global sqloverscurrentquery %reg[dot]"
       printf "execute-keys 'gjo<esc>! usql -c \"%%opt{sqloverscurrentquery}\" %%opt{sqloverselecteddsn} --json <a-!><ret>jd'\n"
     else
       echo "set-option global sqloverscurrentquery \"$@\""
