@@ -39,4 +39,14 @@ plug "eko234/sqlover" config %{
 }
 ```
 
+## Configuration
+
+As I said, this thing uses usql under the hood, if you want to pass any additional flags you can modify the `sqlovercmdoptions` to do things like removing the json formatting, as this plugin sets it to `'--json'` by default, or even get also the stderr to the sqlover buffer so you know when and why things go wrong
+
+``` sh
+  set global sqlovercmdoptions '--csv 2>&1'
+```
+
+## Shameless self promotion
+
 I also developped `geppeto` for kakoune, which is a chat gpt interactive client that uses fifos, the ideas of querying and prompting with selections could be quite interesting to combine, so give it a shot.

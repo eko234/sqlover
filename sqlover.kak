@@ -10,7 +10,7 @@ declare-option bool sqloverstarted false
 declare-option str sqloverselecteddsn
 declare-option str sqloverselecteddb
 declare-option str sqloverscurrentquery
-declare-option str sqlovercmdoptions "--json"
+declare-option str sqlovercmdoptions "--json 2>&1"
 
 define-command opensqlover -override %{
   try %{
@@ -49,11 +49,11 @@ define-command sqloverdoq -override -params 0.. %{
     if [ $(($(printf %s "${kak_selection}" | wc -m))) -gt 1 ]; then
       echo "set-option global sqloverscurrentquery %reg[dot]"
       printf "opensqlover\n"
-      printf "execute-keys 'gjo<esc>! usql -c \"%%opt{sqloverscurrentquery}\" %%opt{sqloverselecteddsn} $kak_opt_sqlovercmdoptions <a-!><ret>jd'\n"
+      printf "execute-keys 'gjo<esc>! usql -c \"%%opt{sqloverscurrentquery}\" %%opt{sqloverselecteddsn} $kak_opt_sqlovercmdoptions 2>&1 <a-!><ret>jd'\n"
     else
       echo "set-option global sqloverscurrentquery \"$@\""
       printf "opensqlover\n"
-      printf "execute-keys 'gjo<esc>! usql -c \"%%opt{sqloverscurrentquery}\" %%opt{sqloverselecteddsn} $kak_opt_sqlovercmdoptions <a-!><ret>jd'\n"
+      printf "execute-keys 'gjo<esc>! usql -c \"%%opt{sqloverscurrentquery}\" %%opt{sqloverselecteddsn} $kak_opt_sqlovercmdoptions 2>&1 <a-!><ret>jd'\n"
     fi
   }
 
